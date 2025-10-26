@@ -1,11 +1,11 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-      "outDir": "./dist/cjs",
+      "outDir": "dist/cjs",
       "module": "CommonJS",
-      "target": "ES2020",
-      "declaration": false
+      "declaration": false,
+      "sourceMap":true
     },
-    "include": ["src/**/*.ts"]
+    "include": ["src"]
 }
   

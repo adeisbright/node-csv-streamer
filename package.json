@@ -3,17 +3,20 @@
     "version": "0.1.0",
     "description": "Stream large datasets and export to CSV - streaming, memory-efficient exporter",
     "files": [
-        "dist"
+        "dist",
+        "README.md",
+        "LICENSE"
     ],
-    "main": "./dist/cjs/NodeCsvStream.js",
-    "module": "./dist/esm/NodeCsvStream.js",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
     "types": "./dist/types/index.d.ts",
     "type": "module",
     "exports": {
-      ".": {
-        "import": "./dist/esm/NodeCsvStream.js",
-        "require": "./dist/cjs/NodeCsvStream.js"
-      }
+        ".": {
+            "import": "./dist/esm/index.js",
+            "require": "./dist/cjs/index.js",
+            "default": "./dist/cjs/index.js"
+        }
     },
     "scripts": {
         "clean": "rimraf dist",
@@ -47,9 +50,6 @@
         "ts-jest": "^29.4.5",
         "ts-node": "^10.9.2",
         "typescript": "^5.9.3"
-    },
-    "peerDependencies": {
-        "stream": "*"
     },
     "repository": {
         "type": "git",

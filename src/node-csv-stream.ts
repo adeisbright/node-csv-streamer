@@ -95,14 +95,14 @@ export class NodeCsvStream {
 
   /**
    * @static
-   * @method prepareCsvDocs
+   * @method prepareDocs
    * @description The default utility function used to map source document fields to output CSV headers.
    * It handles basic field mapping and simple concatenation of multiple fields (e.g., "firstName-lastName").
    * @param {any} chunk - A single raw document object fetched from the data source.
    * @param {Record<string, any>} fileMapping - The mapping definition: { "CSV Header": "sourceField" }.
    * @returns {Record<string, any>} An object where keys are the final CSV headers and values are the mapped data.
    */
-  static prepareCsvDocs(chunk: any, fileMapping: Record<string, any>) {
+  static prepareDocs(chunk: any, fileMapping: Record<string, any>) {
     const headers: Record<string, any> = {};
 
     for (const [key, value] of Object.entries(fileMapping)) {
@@ -146,16 +146,16 @@ export class NodeCsvStream {
    * @throws {Error} Throws an error if the provided `res` is not a valid Writable Stream
    * or if any error occurs during streaming.
    */
-  static async downloadCsv(
+  static async download(
     res: Writable,
     fileMapping: Record<string, any>,
     documentFetcher: DocumentFetcher,
-    docsFormattingFn: DocsFormattingFn = NodeCsvStream.prepareCsvDocs,
-    batchSize = 1000,
-    query?: any
+    query?: any,
+    docsFormattingFn: DocsFormattingFn = NodeCsvStream.prepareDocs,
+    batchSize = 1000
   ): Promise<void> {
     try {
-      // Input validation check
+      // Input validation check for output destination
       if (
         !res ||
         typeof res.write !== "function" ||

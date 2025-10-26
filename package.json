@@ -1,6 +1,6 @@
 {
     "name": "node-csv-streamer",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Stream large datasets and export to CSV - streaming, memory-efficient exporter",
     "files": [
         "dist",
